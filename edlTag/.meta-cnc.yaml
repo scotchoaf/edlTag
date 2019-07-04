@@ -1,0 +1,74 @@
+# skillet preamble information used by panhandler
+# ---------------------------------------------------------------------
+# unique snippet name
+name: tag_edl_test
+# label used for menu selection
+label: EDL Tag policy
+description: this is my edl tag policy block rule
+
+# type of device configuration
+# common types are panorama, panos, and template
+# https://github.com/PaloAltoNetworks/panhandler/blob/develop/docs/metadata_configuration.rst
+type: template
+# preload static or default-based templates
+extends:
+
+# grouping of like snippets for dynamic menu creation in panhandler
+labels:
+  collection:
+    - tutorial
+    - Support
+
+# ---------------------------------------------------------------------
+# end of preamble section
+
+# variables section
+# ---------------------------------------------------------------------
+# variables used in the configuration templates
+# type_hint defines the form field used by panhandler
+# type_hints can be text, ip_address, or dropdown
+variables:
+  - name: edl_name
+    description: edl name
+    default: my_edl
+    type_hint: text
+  - name: edl_desc
+    description: edl desc
+    default: my_edl_desc
+    type_hint: text
+  - name: edl_url
+    description: edl url
+    default: http://someurl.com/file.txt
+    type_hint: text
+  - name: tag_name
+    description: tag name
+    default: edl_tag
+    type_hint: text
+  - name: tag_desc
+    description: tag desc
+    default: my_tag_desc
+    type_hint: text
+  - name: tag_color
+    description: sample dropdown list
+    default: red
+    type_hint: dropdown
+    dd_list:
+      - key: red
+        value: color1
+      - key: orange
+        value: color6
+      - key: blue
+        value: color3
+
+# ---------------------------------------------------------------------
+# end of variables section
+
+# snippets section
+# ---------------------------------------------------------------------
+# snippets used for api configuration including xpath and element as file name
+# files will load in the order listed
+snippets:
+  - name: edl_tag.conf
+    file: edl_tag.conf
+# ---------------------------------------------------------------------
+# end of snippets section
